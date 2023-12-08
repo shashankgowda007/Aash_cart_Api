@@ -3,14 +3,16 @@ const router = express.Router();
 const mysql = require('mysql2/promise');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid'); // Import the UUID module
+const cors = require('cors');
 
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '1357',
-    database: 'aashcart',
+    host: 'project-database.cpytoutng4j0.eu-north-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'qazwsxedc',
+    database: 'aashcartProductDB',
     connectionLimit: 10,
 });
+router.use(cors());
 
 // Signup
 router.post('/signup', async (req, res) => {
